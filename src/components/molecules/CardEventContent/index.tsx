@@ -12,7 +12,7 @@ import {
   StyledStack,
 } from './style'
 
-const ContentCard = ({ item }) => {
+const ContentCard = ({ item }: any) => {
   const { title, description, type, info } = item
   const isExistInvitedPeople = Boolean(item.invited_people)
 
