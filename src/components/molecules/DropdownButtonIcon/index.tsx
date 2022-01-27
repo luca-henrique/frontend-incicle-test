@@ -1,12 +1,10 @@
 import * as React from 'react'
 
-import { IconButton, Stack } from '@mui/material/'
+import { Stack, Menu, MenuItem } from '@mui/material/'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import { Button } from './style'
 
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-
-const Button = () => {
+const DropdownButton = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -18,15 +16,17 @@ const Button = () => {
 
   return (
     <Stack justifyContent="center" style={{ marginRight: '4px' }}>
-      <IconButton
+      <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        style={{ background: '#DBDBDB' }}
+        size="small"
       >
         <MoreHorizIcon />
-      </IconButton>
+      </Button>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -42,4 +42,4 @@ const Button = () => {
   )
 }
 
-export default Button
+export default DropdownButton
