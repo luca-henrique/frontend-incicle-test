@@ -1,12 +1,14 @@
 import { Stack } from '@mui/material/'
 
-import List from 'src/constants/List'
-import Card from '../../atoms/Card'
+import DATA from 'src/constants/data.json'
+import Card from '../Card'
 
 const ListEvents = () => {
+  const { data } = DATA
+
   return (
     <Stack direction="column" style={{ width: '100%' }}>
-      {List.map(item => {
+      {data.map(item => {
         return <Card item={item} />
       })}
     </Stack>

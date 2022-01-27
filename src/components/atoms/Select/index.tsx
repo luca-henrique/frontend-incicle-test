@@ -1,32 +1,50 @@
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { useState } from 'react'
 
 import { MenuItem, FormControl } from '@mui/material/'
 
-const StyledSelect = () => {
-  const [age, setAge] = useState('')
+interface Option {
+  value: string
+  label: string
+}
 
+interface Options {
+  options: Array<Option>
+  value: string
+  setValue: (value: string) => void
+  fullWidth?: boolean
+}
+
+const StyledSelect = ({ options, value, setValue, fullWidth }: Options) => {
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string)
+    setValue(event.target.value as string)
   }
 
   return (
-    <FormControl sx={{ minWidth: 120 }} style={{ backgroundColor: '#fff' }}>
+    <FormControl
+      sx={{ width: fullWidth ? '100%' : '95px', height: '38px' }}
+      style={{ backgroundColor: '#fff' }}
+    >
       <Select
-        value={age}
+        value={value}
         onChange={handleChange}
         displayEmpty
+        fullWidth
         inputProps={{ 'aria-label': 'Without label' }}
+        size="small"
       >
         <MenuItem value="">
-          <em>TIPO</em>
+          <em>Tipo</em>
         </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {options.map(option => {
+          return <MenuItem value={option.value}>{option.label}</MenuItem>
+        })}
       </Select>
     </FormControl>
   )
+}
+
+StyledSelect.defaultProps = {
+  fullWidth: false,
 }
 
 export default StyledSelect

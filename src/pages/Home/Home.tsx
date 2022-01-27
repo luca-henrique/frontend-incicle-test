@@ -1,12 +1,15 @@
 import Stack from '@mui/material/Stack'
-import BodyPage from 'src/components/organisms/BodyPage'
-import HeaderAppBar from '../../components/organisms/HeaderAppBar'
+import MainContentPage from 'src/components/organisms/MainContentPage'
+import HeaderAppBar from 'src/components/molecules/NavAppBar'
 
 export const Home = () => {
   return (
-    <Stack style={{ backgroundColor: '#F2F3F5', height: '100vh' }}>
+    <Stack
+      direction="column"
+      style={{ backgroundColor: '#F2F3F5', height: '100vh' }}
+    >
       <HeaderAppBar />
-      <BodyPage />
+      <MainContentPage />
     </Stack>
   )
 }
