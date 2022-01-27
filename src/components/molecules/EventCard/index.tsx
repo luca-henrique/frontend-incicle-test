@@ -8,7 +8,6 @@ const Card = ({ item }) => {
     <Stack
       direction="row"
       style={{
-        marginBottom: '10px',
         backgroundColor: '#fff',
         boxShadow:
           '0px 5px 17px rgba(243, 243, 243, 0.4283),0px 1.8696px 5px rgba(24, 24, 43, 0.0526),0px 2.0543px 17.7391px rgba(0, 0, 0, 0.0526)',

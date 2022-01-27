@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material/'
 
 import Header from '../../molecules/HeaderBody'
-// import ListCards from '../ListEvents'
-// import Widget from '../WidgetManagement'
+import ListCardEvents from '../ListCardEvents'
+import Widget from '../WidgetManagement'
 
 export default function MainContantPage() {
   return (
@@ -11,11 +11,11 @@ export default function MainContantPage() {
         direction={{ xs: 'column', sm: 'row' }}
         style={{ width: '100%', padding: '0 8px' }}
       >
-        <Stack style={{ width: '100%' }}>
+        <Stack style={{ width: '100%' }} spacing={3}>
           <Header />
-          {/* <ListCards /> */}
+          <ListCardEvents />
         </Stack>
-        {/* <Widget /> */}
+        <Widget />
       </Stack>
     </Stack>
   )
