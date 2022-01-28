@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 
 export const EventsContext = React.createContext({})
 
+import DATA from 'src/constants/data.json'
+
 export const EventProvider = ({ children }) => {
   const [events, setEvents] = useState([])
+  const { data } = DATA
 
   const filterEvents = type => {
-    const userStorage = JSON.parse(localStorage.getItem('events'))
-
     if (type === 'default') {
-      setEvents([...userStorage])
+      setEvents([...data])
     } else {
       var eventsFilterTypes = userStorage.filter(event => event.type === type)
       setEvents([...eventsFilterTypes])
@@ -22,12 +23,7 @@ export const EventProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    const userStorage = localStorage.getItem('events')
-    if (userStorage) {
-      setEvents(JSON.parse(userStorage))
-    } else {
-      setEvents([])
-    }
+    setEvents(data)
   }, [])
 
   return (
