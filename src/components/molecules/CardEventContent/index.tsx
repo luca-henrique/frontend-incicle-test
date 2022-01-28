@@ -12,11 +12,21 @@ import {
   StyledStack,
 } from './style'
 
+/*
+  No item do tipo EVENTO, ao clicar no link destacado em azul "2 pessoas confirmadas de 3",
+  deve aparecer um modal listando os convidados e a resposta conforme os dados apresentados no json.
+  É necessário informar o nome do convidado, a foto, o nome de usuário e informar se 
+  o usuário confirmou presença ou não;
+*/
+
 const ContentCard = ({ item }: any) => {
   const { title, description, type, info } = item
   const isExistInvitedPeople = Boolean(item.invited_people)
 
   const [countConfirmationPeople, setCountConfirmationPeople] = useState(0)
+
+  const [visibleModalInvitedPeople, setVisibleOpenModalInvitedPeople] =
+    useState(false)
 
   useEffect(() => {
     let value = 0
@@ -43,7 +53,7 @@ const ContentCard = ({ item }: any) => {
         </DescriptionEventLabelType>
         <Date>{info.date}</Date>
         {isExistInvitedPeople && (
-          <ConfirmationEvent>
+          <ConfirmationEvent onClick={() => console.log('evento')}>
             {countConfirmationPeople} CONFIRMAÇÕES DE
             {item.invited_people.length}
           </ConfirmationEvent>
