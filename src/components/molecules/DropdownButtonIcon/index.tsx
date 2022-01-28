@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { Stack, Menu, MenuItem } from '@mui/material/'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import { useEvent } from 'src/providers/events.js'
 import { Button } from './style'
 
 /*
@@ -11,7 +12,7 @@ import { Button } from './style'
   A mesma funcionalidade deve ocorrer nos quadros de gestão à vista;
 */
 
-const DropdownButton = () => {
+const DropdownButton = ({ id }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -19,6 +20,13 @@ const DropdownButton = () => {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const { removeEvent } = useEvent()
+
+  const handleClickDeletEvent = () => {
+    removeEvent(id)
+    handleClose()
   }
 
   return (
@@ -43,7 +51,7 @@ const DropdownButton = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Excluir</MenuItem>
+        <MenuItem onClick={handleClickDeletEvent}>Excluir</MenuItem>
       </Menu>
     </Stack>
   )

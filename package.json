@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack serve --mode development --open --config webpack.ts",
-    "build": "NODE_ENV=production webpack --mode production --config webpack.ts",
+    "build": "NODE_ENV=production webpack --mode production --config webpack.ts && echo '/* /index.html  200' | cat >dist/_redirects",
     "build:server": "docker-compose build & docker run --name $npm_package_name -p 80:80 -d $npm_package_name\\_nginx",
     "test": "jest",
     "test:coverage": "jest --coverage --watchAll=false",
@@ -15,10 +15,13 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.3.1",
     "dotenv": "^10.0.0",
     "dotenv-webpack": "^7.0.3",
+    "material-table": "^1.69.3",
     "react": "^17.0.2",
     "react-device-detect": "^2.1.2",
     "react-dom": "^17.0.2",

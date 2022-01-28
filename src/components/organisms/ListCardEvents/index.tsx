@@ -1,14 +1,14 @@
 import { Stack } from '@mui/material/'
 import { useEffect, useState } from 'react'
 
-import DATA from 'src/constants/data.json'
 import CircularProgress from '@mui/material/CircularProgress'
+import { useEvent } from 'src/providers/events.js'
 import EventCard from '../../molecules/EventCard'
 
 const ListEvents = () => {
-  const { data } = DATA
-
   const [loading, setLoading] = useState(true)
+
+  const { events } = useEvent()
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,7 +31,7 @@ const ListEvents = () => {
 
   return (
     <Stack direction="column" style={{ width: '100%' }} spacing={1.5}>
-      {data.map(item => {
+      {events.map(item => {
         return <EventCard item={item} />
       })}
     </Stack>
