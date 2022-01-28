@@ -3,6 +3,8 @@ import Modal from '@mui/material/Modal'
 
 import TableInvitedPeople from 'src/components/molecules/EventModalTableInvitedPeople'
 
+import { Container } from './style'
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -15,7 +17,7 @@ const style = {
 export default function BasicModal({ open, setOpen, peopleInvited }) {
   const handleClose = () => setOpen(false)
   return (
-    <div>
+    <Container>
       <Modal
         open={open}
         onClose={handleClose}
@@ -26,6 +28,6 @@ export default function BasicModal({ open, setOpen, peopleInvited }) {
           <TableInvitedPeople peopleInvited={peopleInvited} />
         </Box>
       </Modal>
-    </div>
+    </Container>
   )
 }

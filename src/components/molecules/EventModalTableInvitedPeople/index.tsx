@@ -20,7 +20,16 @@ export default function RemoteData({ peopleInvited }): any {
 
         { title: 'Username', field: 'username' },
         { title: 'Nome', field: 'name' },
-        { title: 'Confirmado', field: 'confirmed_presence' },
+        {
+          title: 'Confirmado',
+          field: 'confirmed_presence',
+          render: rowData => {
+            if (rowData.confirmed_presence) {
+              return <h5>sim</h5>
+            }
+            return <h5>não</h5>
+          },
+        },
       ]}
       data={peopleInvited}
     />
