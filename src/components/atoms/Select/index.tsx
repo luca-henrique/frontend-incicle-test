@@ -32,8 +32,8 @@ const StyledSelect = ({ options, value, setValue, fullWidth }: Options) => {
         inputProps={{ 'aria-label': 'Without label' }}
         size="small"
       >
-        <MenuItem value="">
-          <em>Tipo</em>
+        <MenuItem value="default">
+          <em>Todos</em>
         </MenuItem>
         {options.map(option => {
           return <MenuItem value={option.value}>{option.label}</MenuItem>

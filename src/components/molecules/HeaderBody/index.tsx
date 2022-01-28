@@ -7,6 +7,7 @@ import Select from 'src/components/atoms/Select'
 import Button from 'src/components/atoms/Button'
 
 import { isMobile } from 'react-device-detect'
+import { useEvent } from 'src/providers/events.js'
 import { Title } from './style'
 
 /*
@@ -19,6 +20,13 @@ import { Title } from './style'
 const Header = () => {
   const [filter, setFilter] = useState('')
 
+  const { filterEvents } = useEvent()
+
+  const handleFilterState = type => {
+    filterEvents(type)
+    setFilter(type)
+  }
+
   return (
     <Stack
       direction={{ xs: 'column', sm: 'row' }}
@@ -30,7 +38,7 @@ const Header = () => {
       <Stack direction="row" spacing={2}>
         <Select
           value={filter}
-          setValue={setFilter}
+          setValue={handleFilterState}
           fullWidth={isMobile}
           options={[
             { value: 'event', label: 'Evento' },

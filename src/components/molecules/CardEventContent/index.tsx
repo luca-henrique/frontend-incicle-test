@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import EventModalInvitedPeople from 'src/components/molecules/EventModalInvitedPeople'
 import {
   Title,
   TypeEventCard,
@@ -41,50 +42,36 @@ const ContentCard = ({ item }: any) => {
   }, [])
 
   return (
-    <StyledStack direction="column" spacing={0.5}>
-      <Title>{title}</Title>
+    <>
+      <StyledStack direction="column" spacing={0.5}>
+        <Title>{title}</Title>
 
-      <Container direction="row" alignItems="center" spacing={0.5}>
-        <TypeEventCard background={type}>
-          <LabelTypeEventCard>{item.type}</LabelTypeEventCard>
-        </TypeEventCard>
-        <DescriptionEventLabelType>
-          {type === 'event' && 'COSTELÃO CHURRASCARIA'}
-        </DescriptionEventLabelType>
-        <Date>{info.date}</Date>
-        {isExistInvitedPeople && (
-          <ConfirmationEvent onClick={() => console.log('evento')}>
-            {countConfirmationPeople} CONFIRMAÇÕES DE
-            {item.invited_people.length}
-          </ConfirmationEvent>
-        )}
-      </Container>
-      <Description>{description}</Description>
-    </StyledStack>
+        <Container direction="row" alignItems="center" spacing={0.5}>
+          <TypeEventCard background={type}>
+            <LabelTypeEventCard>{item.type}</LabelTypeEventCard>
+          </TypeEventCard>
+          <DescriptionEventLabelType>
+            {type === 'event' && 'COSTELÃO CHURRASCARIA'}
+          </DescriptionEventLabelType>
+          <Date>{info.date}</Date>
+          {isExistInvitedPeople && (
+            <ConfirmationEvent
+              onClick={() => setVisibleOpenModalInvitedPeople(true)}
+            >
+              {countConfirmationPeople} CONFIRMAÇÕES DE
+              {item.invited_people.length}
+            </ConfirmationEvent>
+          )}
+        </Container>
+        <Description>{description}</Description>
+      </StyledStack>
+      <EventModalInvitedPeople
+        open={visibleModalInvitedPeople}
+        setOpen={setVisibleOpenModalInvitedPeople}
+        peopleInvited={isExistInvitedPeople ? item.invited_people : []}
+      />
+    </>
   )
 }
 
 export default ContentCard
-
-/*
-
-
-<Stack direction="row" alignItems="center" spacing={0.5}>
-        <TypeEventCard background={type}>
-          <LabelTypeEventCard>{item.type}</LabelTypeEventCard>
-        </TypeEventCard>
-        <DescriptionEventLabelType>
-          {type === 'event' && 'COSTELÃO CHURRASCARIA'}
-        </DescriptionEventLabelType>
-        <Date>{info.date}</Date>
-        {isExistInvitedPeople && (
-          <ConfirmationEvent>
-            {countConfirmationPeople} CONFIRMAÇÕES DE
-            {item.invited_people.length}
-          </ConfirmationEvent>
-        )}
-      </Stack>
-      <Description>{description}</Description>
-      
-      
-      */

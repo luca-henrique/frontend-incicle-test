@@ -23,7 +23,7 @@ const Card = ({ item }) => {
 
       <ContentCard item={item} />
 
-      <DropdownButtonIcon />
+      <DropdownButtonIcon id={item.id} />
     </Stack>
   )
 }
