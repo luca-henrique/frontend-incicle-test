@@ -12,7 +12,7 @@ export const EventProvider = ({ children }) => {
     if (type === 'default') {
       setEvents([...data])
     } else {
-      var eventsFilterTypes = userStorage.filter(event => event.type === type)
+      var eventsFilterTypes = data.filter(event => event.type === type)
       setEvents([...eventsFilterTypes])
     }
   }
