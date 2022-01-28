@@ -72,6 +72,8 @@ export const ConfirmationEvent = styled.div`
   font-size: 9px;
   line-height: 12px;
   color: #3489b1;
+
+  cursor: pointer;
 `
 export const Description = styled.h5`
   font-style: normal;

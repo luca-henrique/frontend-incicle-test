@@ -4,6 +4,13 @@ import { Stack, Menu, MenuItem } from '@mui/material/'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { Button } from './style'
 
+/*
+  Ao clicar no botão "more" de cada item, 
+  deve aparecer a opção de "Excluir item", 
+  ao clicar no botão, o item deve sumir. 
+  A mesma funcionalidade deve ocorrer nos quadros de gestão à vista;
+*/
+
 const DropdownButton = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)

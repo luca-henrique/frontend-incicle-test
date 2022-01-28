@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material/'
 
-import ContentCard from 'src/components/molecules/CardContant'
+import ContentCard from 'src/components/molecules/CardEventContent'
 import DropdownButtonIcon from 'src/components/molecules/DropdownButtonIcon'
 
 const Card = ({ item }) => {
